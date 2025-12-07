@@ -5,17 +5,25 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 import json
 import sys
+import sys
 import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 # sys.path.append("../src")
 
 from src.utils import load_image
 from src.gradcam import make_gradcam_heatmap
 
-MODEL_PATH = "/models/brain_tumor_4class.h5"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "..", "models", "brain_tumor_4class.h5")
+MODEL_PATH = os.path.abspath(MODEL_PATH)
+
 model = load_model(MODEL_PATH)
 
-with open("/src/labels.json", "r") as f:
+LABEL_PATH = os.path.join(BASE_DIR, "..", "src", "labels.json")
+LABEL_PATH = os.path.abspath(LABEL_PATH)
+
+with open(LABEL_PATH, "r") as f:
     labels = json.load(f)
 
 idx_to_class = {v: k for k, v in labels.items()}
