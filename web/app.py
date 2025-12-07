@@ -7,15 +7,15 @@ import json
 import sys
 import os
 
-sys.path.append("../src")
+# sys.path.append("../src")
 
 from utils import load_image
 from gradcam import make_gradcam_heatmap
 
-MODEL_PATH = "../models/brain_tumor_4class.h5"
+MODEL_PATH = "/models/brain_tumor_4class.h5"
 model = load_model(MODEL_PATH)
 
-with open("../src/labels.json", "r") as f:
+with open("/src/labels.json", "r") as f:
     labels = json.load(f)
 
 idx_to_class = {v: k for k, v in labels.items()}
