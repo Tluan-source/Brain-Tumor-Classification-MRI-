@@ -9,8 +9,8 @@ import os
 
 # sys.path.append("../src")
 
-from utils import load_image
-from gradcam import make_gradcam_heatmap
+from src.utils import load_image
+from src.gradcam import make_gradcam_heatmap
 
 MODEL_PATH = "/models/brain_tumor_4class.h5"
 model = load_model(MODEL_PATH)
